@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"5a27S":[function(require,module,exports) {
+})({"5LxOR":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "f5222b263707926e";
+module.bundle.HMR_BUNDLE_ID = "5a8d2fea19541db5";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -578,48 +578,42 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"5HCRc":[function(require,module,exports) {
-// https://leetcode.com/problems/minimum-size-subarray-sum/
-var minSubArrayLen = function(nums, target) {
-// let i=0, j=0, minLen = Number.MAX_SAFE_INTEGER + 1, fonud = false, sum = nums[0];
-// while(j<nums.length) {
-//     if(sum >= target) {
-//         fonud = true;
-//         minLen = Math.min(j-i+1);
-//         sum = sum - nums[i]
-//         i++;
-//     } else {
-//         j++;
-//         sum += nums[j];
-//     }
-// }
-// if(!fonud) return 0;
-// return minLen;
-};
-var minSubArrayLen = function(nums, target) {
-    let i = 0, j = 0, n = nums.length, min = Number.MAX_SAFE_INTEGER + 1, sum = nums[0], found = false;
-    while(j < n)if (sum >= target) {
-        min = Math.min(min, j - i + 1);
-        found = true;
-        sum = sum - nums[i];
+},{}],"gawt6":[function(require,module,exports) {
+function findTheMaxSum(nums, target) {
+    let n = nums.length, sum = 0, maxSum = 0, i = 0;
+    // while(i<=(n-target)) {
+    //     let j=i, sum=0;
+    //     while(j<i+target) {
+    //         sum += nums[j];
+    //         j++;
+    //     }
+    //     maxSum = Math.max(sum, maxSum);
+    //     i++;
+    // }
+    // return maxSum;
+    while(i < target){
+        sum += nums[i];
         i++;
-    } else {
-        j++;
-        sum += nums[j];
     }
-    console.log(sum, min);
-    if (!found) return 0;
-    return min;
-};
-minSubArrayLen([
-    2,
-    3,
-    1,
+    i = target;
+    maxSum = sum;
+    while(i < n){
+        sum += nums[i] - nums[i - target];
+        if (sum > maxSum) sum = maxSum;
+        i++;
+    }
+    console.log(maxSum);
+}
+findTheMaxSum([
     2,
     4,
-    3
-], 7);
+    6,
+    1,
+    -2,
+    9,
+    0
+], 3);
 
-},{}]},["5a27S","5HCRc"], "5HCRc", "parcelRequire44de")
+},{}]},["5LxOR","gawt6"], "gawt6", "parcelRequire44de")
 
-//# sourceMappingURL=index.3707926e.js.map
+//# sourceMappingURL=index.19541db5.js.map
