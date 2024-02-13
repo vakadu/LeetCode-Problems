@@ -1,7 +1,8 @@
 function linearSearch(array, target) {
-    console.log(find(array, target, 0)); 
-    console.log(findIndex(array, target, 0)); 
-    console.log(findAllIndex(array, target, 0, [])); 
+    // console.log(find(array, target, 0)); 
+    // console.log(findIndex(array, target, 0)); 
+    // console.log(findAllIndex(array, target, 0, [])); 
+    console.log(findAllIndex2(array, target, 0)); 
 }
 
 function find(array, target, i) {
@@ -30,14 +31,42 @@ function findIndex(array, target, i) {
 
 function findAllIndex(array, target, i, newArr) {
     if(i >= array.length - 1) {
-        return [];
+        return newArr;
     }
-    console.log(newArr);
 
     if(array[i] === target) {
         newArr.push(i);
     }
-    findAllIndex(array, target, i+1, newArr)
+    return findAllIndex(array, target, i+1, newArr)
+}
+
+function findAllIndex2(array, target, i) {
+
+    // if(i >= array.length - 1) {
+    //     return [];
+    // }
+
+    // const newArr = array[i] === target ? [i] : [];
+
+    // const result = findAllIndex2(array, target, i+1);
+    // const final = newArr.concat(result)
+    // console.log(result);
+    // return final;
+
+    const newArr = [];
+
+    if(i >= array.length - 1) {
+        return newArr;
+    }
+
+    if(array[i] === target) {
+        newArr.push(i);
+    }
+
+    const result = findAllIndex2(array, target, i+1);
+    const finalResult = newArr.concat(result);
+    console.log(result, finalResult);
+    return finalResult;
 }
 
 linearSearch([3,2,1,2,18,9], 2)
