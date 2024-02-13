@@ -1,3 +1,7 @@
+//check if the given arr is sorted or not
+//return true if its sorted
+
+
 function sortedArray(arr) {
     console.log(helper(arr, 0));
 }
