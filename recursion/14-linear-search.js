@@ -1,3 +1,6 @@
+//see if the taget is present in the array
+//return boolean
+
 function linearSearch(array, target) {
     // console.log(find(array, target, 0)); 
     // console.log(findIndex(array, target, 0)); 
