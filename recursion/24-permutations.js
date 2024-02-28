@@ -1,5 +1,7 @@
 // p -> processed
 // up -> unprocessed
+//will be given a string return all the permutations
+// abc -> abc, acb, bca, bac, cab, cba
 
 function permutations(p, up) {
 

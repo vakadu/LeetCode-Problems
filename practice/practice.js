@@ -153,3 +153,97 @@
 
 // console.log(selectionSort2([2,1,5,6,3]));
 
+// function mergeSort(arr) {
+//     if(arr.length <= 1) {
+//         return arr;
+//     }
+
+//     let mid = Math.floor(arr.length / 2);
+
+//     let left = mergeSort(arr.slice(0, mid));
+//     let right = mergeSort(arr.slice(mid));
+
+//     return merge(left, right);
+// }
+
+// function merge(l, r) {
+//     let i=0, j=0, s=[];
+
+//     while(l && i<l.length && r && j<r.length) {
+//         if(l[i] < r[j]) {
+//             s.push(l[i]);
+//             i++;
+//         } else {
+//             s.push(r[j]);
+//             j++;
+//         }
+//     }
+//     return s.concat(l.slice(i).concat(r.slice(j)));
+// }
+
+// console.log(mergeSort([2,1,5,6,3]));
+
+// function skipCharacter(str, target) {
+
+//     return helper(str, target);
+// }
+
+// function helper(s, t) {
+//     if(s === "") {
+//         return s;
+//     }
+
+//     let ch = s.charAt(0);
+
+//     if(ch === t) {
+//         return helper(s.slice(1), t);
+//     } else {
+//         return ch + helper(s.slice(1), t)
+//     }
+// }
+
+// console.log(skipCharacter("abaccd", "a"));
+
+// function skipString(str, target) {
+//     return helper(str, target);
+// }
+
+// function helper(s, t) {
+
+//     if(s === "") {
+//         return s;
+//     }
+
+//     let ch = s.charAt(0);
+//     if(s.startsWith(t)) {
+//         return helper(s.slice(t.length), t)
+//     } else {
+//         return ch + helper(s.slice(1), t)
+//     }
+// }
+
+// console.log(skipString("apple", "le"));
+
+// function subsequence(str, r) {
+//     if(str === "") {
+//         return [r];
+//     }
+
+//     let ch = str.charAt(0);
+
+//     let l = subsequence(str.slice(1), ch + r);
+//     let ri = subsequence(str.slice(1), r);
+
+//     console.log(l, ri);
+
+//     return [...l, ...ri]
+// }
+
+// console.log(subsequence("abc", ""));
+
+function permutations(str) {
+
+}
+
+permutations("abc")
+

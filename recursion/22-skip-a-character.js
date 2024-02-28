@@ -1,3 +1,6 @@
+//you will get a string and a target value, remove the target value from the string
+//nad return the remaining value
+
 function skipCharacter(str, t) {
 
     // return helper(str, t, "");

@@ -35,9 +35,9 @@ function merge(l, r) {
         }
     }
     console.log(sortedArr, l, r);
-
-    return sortedArr.concat(l.slice(i)).concat(r.slice(j));
-
+    
+    let result = sortedArr.concat(l.slice(i)).concat(r.slice(j));
+    return result;
 
 }
 
@@ -63,5 +63,5 @@ function mergePlace(arr, s, m, e) {
     console.log(s,m,e);
 }
 
-// console.log(mergeSort([3,1,5]));
-console.log(mergeSort2([3,1,5, 4]));
+console.log(mergeSort([2,1,5,6,3]));
+// console.log(mergeSort2([3,1,5, 4]));

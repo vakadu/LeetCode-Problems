@@ -1,3 +1,6 @@
+//give all the possible subsequence of the string
+//abc -> ab, bc, ca, a, b, c, cba
+
 function subsequence(s, r) {
 
     if(s === "") {
@@ -29,4 +32,4 @@ function subsequence2(s, r) {
 }
 
 subsequence("abc", "")
-// console.log(subsequence2("abc", ""));
+console.log(subsequence2("abc", ""));
