@@ -2,7 +2,7 @@
     "name": "leetcode",
     "source": "index.html",
     "scripts": {
-      "start": "parcel",
+      "start": "parcel --no-cache",
       "build": "parcel build"
     },
     "devDependencies": {
