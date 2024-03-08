@@ -260,5 +260,5 @@ function bcMazePrintingPaths(p, b, r, c, step, path) {
 
 }
 
-console.log(bcMazePrintingPaths("", create2DArray(3,3,true), 0, 0, 1, create2DArray(3,3,0)));
+console.log(bcMazePrintingPaths("", create2DArray(2,2,true), 0, 0, 1, create2DArray(2,2,0)));
 
