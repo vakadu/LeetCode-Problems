@@ -153,6 +153,7 @@
 
 // console.log(selectionSort2([2,1,5,6,3]));
 
+<<<<<<< Updated upstream
 // function mergeSort(arr) {
 //     if(arr.length <= 1) {
 //         return arr;
@@ -241,9 +242,14 @@
 
 // console.log(subsequence("abc", ""));
 
-function permutations(str) {
+function permutations(p, u) {
+
+    if(u === "") {
+        return [p];
+    }
+
 
 }
 
-permutations("abc")
+permutations("", "abc")
 
