@@ -265,6 +265,16 @@ function displayBoard(b, str) {
     }).join('\n');
     console.log(br);
 }
+function permutations(p, u) {
+
+    if(u === "") {
+        return [p];
+    }
+
+
+}
+
+permutations("", "abc")
 
 // function nQueens(board, row) {
 //     if(row === board.length) {
