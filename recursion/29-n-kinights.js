@@ -7,7 +7,6 @@ function nKnights(board, row) {
     }
 
     for(let col=0; col<board.length; col++) {
-        console.log(board, row, col);
         if(isSafe(board, row, col)) {
             board[row][col] = true;
             nKnights(board, row+1);

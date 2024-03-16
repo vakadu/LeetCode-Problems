@@ -241,6 +241,30 @@
 
 // console.log(subsequence("abc", ""));
 
+// function permutations(str) {
+
+// }
+
+// permutations("abc")
+
+function createNArray(r, c, d) {
+    let arr = new Array(r).fill(d);
+
+    for(let i=0; i<r; i++) {
+        arr[i] = new Array(c).fill(d)
+    }
+
+    return arr;
+
+}
+
+function displayBoard(b, str) {
+    let br = b.map((cell) => {
+        let re = cell.map((i) => i ? str : 'X').join(' ');
+        return re;
+    }).join('\n');
+    console.log(br);
+}
 function permutations(p, u) {
 
     if(u === "") {
@@ -252,3 +276,98 @@ function permutations(p, u) {
 
 permutations("", "abc")
 
+// function nQueens(board, row) {
+//     if(row === board.length) {
+//         displayBoard(board, 'Q');
+//         return;
+//     }
+
+//     for(let col = 0; col < board.length; col++) {
+//         if(isSafe(board, row, col)) {
+//             board[row][col] = true;
+//             nQueens(board, row+1);
+//             board[row][col] = false;
+//         }
+//     }
+// }
+
+// function isSafe(b, r, c) {
+//     //vertical
+//     for(i=0; i<r; i++) {
+//         if(b[i][c]) {
+//             return false;
+//         }
+//     }
+
+//     //left
+//     let maxLeft = Math.min(r, c);
+//     for(i=1; i<=maxLeft; i++) {
+//         if(b[r-i][c-i]) {
+//             return false
+//         }
+//     }
+
+//     let maxRight = Math.min(r, b.length-c-1);
+//     for(i=1; i<=maxRight; i++) {
+//         if(b[r-i][c+i]) {
+//             return false
+//         }
+//     }
+
+//     return true;
+// }
+
+
+// nQueens(createNArray(4,4,false), 0)
+
+function nKnights(board, row) {
+    if(row === board.length) {
+        displayBoard(board, 'K');
+        return;
+    }
+
+    for(let col=0; col < board.length; col++) {
+        if(isSafe(board, row, col)) {
+            board[row][col] = true;
+            nKnights(board, row + 1);
+            board[row][col] = false;
+        }
+    }
+}
+
+function isSafe(b, r, c) {
+    if(isValid(b,r-2,c-1)) {
+        if(b[r-2][c-1]) {
+            return false
+        }
+    }
+
+    if(isValid(b,r-2,c+1)) {
+        if(b[r-2][c+1]) {
+            return false
+        }
+    }
+
+    if(isValid(b,r-1,c+2)) {
+        if(b[r-1][c+2]) {
+            return false
+        }
+    }
+
+    if(isValid(b,r-1,c-2)) {
+        if(b[r-1][c-2]) {
+            return false
+        }
+    }
+
+    return true;
+}
+
+function isValid(b, r, c) {
+    if(r >= 0 && r < b.length && c >= 0 && c < b.length) {
+        return true;
+    }
+    return false;
+}
+
+nKnights(createNArray(4,4,false), 0)
