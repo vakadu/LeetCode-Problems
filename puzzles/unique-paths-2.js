@@ -10,7 +10,7 @@ function helper(g, r, c, p) {
     }
 
     if(r === m && c === n) {
-        return 1
+        return 1;
     }
 
     if(r<m && !g[r + 1][c]) {
@@ -24,4 +24,4 @@ function helper(g, r, c, p) {
     return count
 }
 
-console.log(uniquePaths([[0,1]]));
+console.log(uniquePaths([[1]]));
