@@ -99,6 +99,23 @@ class LinkedList {
         }
         console.log(str);
     }
+
+    insertRecusion(val, index) {
+        this.head = this.helperRec(val, index, this.head);
+    }
+
+    helperRec(v, i, node) {
+
+        if(i === 0) {
+            let temp = new Node(v);
+            temp.next = node;
+            this.size++;
+            return temp;
+        }
+
+        node.next = this.helperRec(v, i-1, node.next);
+        return node;
+    }
 }
 
 let list = new LinkedList();
@@ -107,9 +124,9 @@ list.add(2);
 list.add(3);
 list.add(4);
 list.add(5);
-list.insertAt(21, 2);
+list.insertRecusion(21, 2);
 // list.deleteFirst();
 // list.deleteAt(3);
-list.deleteLast();
+// list.deleteLast();
 
 list.display();
