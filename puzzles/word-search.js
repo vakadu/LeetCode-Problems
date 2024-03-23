@@ -2,7 +2,7 @@ function wordSearch(arr, s) {
 
     for(let i=0; i<arr.length; i++) {
         for(j=0; j<arr[0].length; j++) {
-            if(arr[i][j] === s[0] && check(arr, i, j, s)) {
+            if(backtrack(arr, i, j, s, 0)) {
                 return true
             }
         }
@@ -11,25 +11,30 @@ function wordSearch(arr, s) {
     return false;
 }
 
-function check(g, r, c, str) {
+function backtrack(g, r, c, str, index) {
+    console.log(str);
 
-    for(let i=1; i<str.length; i++) {
-        if((c+i) < g[0].length - 1 && g[r][c+i] === str[i]) {
-            continue;
-        }
-        if((c-i) >= 0 && g[r][c-i] === str[i]) {
-            continue;
-        }
-        if((r+i) < g.length - 1 && g[r+i][c] === str[i]) {
-            continue;
-        }
-        if((r-i) >= 0 && g[r-i][c] === str[i]) {
-            continue;
-        };
-        return;
+    if(index === str.length) {
+        return true;
     }
 
-    return true
+    if(r<0 || r>=g.length || c<0 || c>=g[0].length || g[r][c] !== str[index]) {
+        return false;
+    }
+
+    const char = g[r][c];
+    g[r][c] = '#'; // marked as visited
+
+    const directions = [[0,1], [0,-1], [1,0], [-1,0]];
+
+    for(let [x, y] of directions) {
+        if(backtrack(g, r+x, c+y, str, index + 1)) {
+            return true;
+        }
+    }
+
+    g[r][c] = char;
+    return false;
 }
 
 console.log(wordSearch([["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "ABCCED"));
