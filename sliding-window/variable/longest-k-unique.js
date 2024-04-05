@@ -11,7 +11,6 @@ function longest(s, k) {
             while(map.size > k) {
                 map = map.set(s[i], map.get(s[i]) - 1);
                 if(map.get(s[i]) <= 0) {
-                    console.log();
                     map.delete(s[i]);
                 }
 
