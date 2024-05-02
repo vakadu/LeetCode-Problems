@@ -1,11 +1,30 @@
-function histogram(heights) {
-    let left = nsl(heights), right = nsr(heights), width = area(left, right), max=0;
+function maxRect(matrix) {
+    let result = [];
+    for(let i=0; i<matrix.length; i++) {
+        let row = matrix[i], newRow = [];
 
-    for(let i=0; i<heights.length; i++) {
-        max = Math.max(max, width[i] * heights[i]);
+        if(i>0) {
+            let prevRow = result[i-1];
+            for(let j=0; j<row.length; j++) {
+                let temp = parseInt(row[j]) + parseInt(prevRow[j]);
+                newRow.push(temp);
+            }
+
+        } else {
+            newRow = row.map(Number);
+        }
+        result.push(newRow);
+
+        let left = nsl(newRow), right = nsr(newRow), width = area(left, right);
+
+        for(let i=0; i<heights.length; i++) {
+            max = Math.max(max, width[i] * heights[i]);
+        }
+        
+        console.log(width);
     }
 
-    console.log(max);
+    console.log(result);
 }
 
 function nsl(arr) {
@@ -69,4 +88,4 @@ function area(l, r) {
     return result;
 }
 
-histogram([6,2,5,4,5,1,6]);
+maxRect([["0","1","1","0"],["1","1","1","1"],["1","1","1","1"],["1","1","0","0"]]);

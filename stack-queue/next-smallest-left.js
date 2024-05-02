@@ -14,7 +14,7 @@ function smallest(nums) {
                 result.push(stack);
             }
         } else {
-            result.push(nums[i])
+            result.push(stack[0])
         }
 
         stack.push(nums[i]);

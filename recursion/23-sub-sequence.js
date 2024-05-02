@@ -1,5 +1,5 @@
 //give all the possible subsequence of the string
-//abc -> ab, bc, ca, a, b, c, cba
+//abc -> ab, bc, ca, a, b, c, abc
 
 function subsequence(s, r) {
 

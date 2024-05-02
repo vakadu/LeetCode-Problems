@@ -2,10 +2,13 @@
     "name": "leetcode",
     "source": "index.html",
     "scripts": {
-      "start": "parcel --no-cache",
-      "build": "parcel build"
+        "start": "parcel --no-cache",
+        "build": "parcel build"
     },
     "devDependencies": {
         "parcel": "latest"
+    },
+    "dependencies": {
+        "@datastructures-js/priority-queue": "^6.3.1"
     }
 }
