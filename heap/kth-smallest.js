@@ -8,18 +8,23 @@
 // Input: arr[] = {7, 10, 4, 3, 20, 15}, K = 4 
 // Output: 10 
 
+import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
+
 function kSmallest(arr, k) {
-    let result = [];
+    let result = [], queue = new MaxPriorityQueue();
 
     for(let i=0; i<arr.length; i++) {
         result.push(arr[i]);
+        queue.push(arr[i]);
 
-        if(result.length > k) {
+        if(queue.size() > k) {
             result.pop();
+            queue.pop();
         }
     }
 
-    console.log(result);
+    console.log(queue.front());
+
 }
 
-kSmallest([7, 10, 4, 3, 20, 15], 3);
+kSmallest([7, 10, 4, 3, 20, 15], 4);

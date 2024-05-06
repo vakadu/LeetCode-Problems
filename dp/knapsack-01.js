@@ -38,5 +38,30 @@ function helperMemoize(wt, p, w, n, dp) {
     }
 }
 
+function topDown(wt, p, w) {
+    let matrix = new Array(wt.length+1).fill(-1).map((el) => new Array(w + 1).fill(-1));
+
+    for(let i=0; i<wt.length+1; i++) {
+        for(let j=0; j<w+1; j++) {
+            if(i===0 || j===0){
+                matrix[i][j] = 0;
+            }
+        }
+    }
+
+    for(let i=1; i<wt.length+1; i++) {
+        for(let j=1; j<w+1; j++) {
+            if(wt[i-1] <= j) {
+                matrix[i][j] = Math.max(p[i-1]+matrix[i-1][j-wt[i-1]], matrix[i-1][j])
+            } else {
+                matrix[i][j] = matrix[i-1][j]
+            }
+        }
+    }
+
+    console.log(matrix);
+}
+
 // console.log(recursive([4,5,1], [1,2,3], 4));
-console.log(memoize([4,5,1], [1,2,3], 4));
+// console.log(memoize([4,5,1], [1,2,3], 4));
+console.log(topDown([4,5,1], [1,2,3], 4))
