@@ -1,16 +1,17 @@
-const { MinPriorityQueue } = require("@datastructures-js/priority-queue");
+const { MaxPriorityQueue, MinPriorityQueue } = require("@datastructures-js/priority-queue");
 
 function kLargest(arr, k) {
     let queue = new MinPriorityQueue();
 
     for(let i=0; i<arr.length; i++) {
-        queue.push(arr[i]);
-        console.log(queue);
+        queue.enqueue(arr[i]);
 
-        // if(queue.size() > k) {
-        //     queue.pop()
-        // }
+        if(queue.size() > k) {
+            queue.dequeue()
+        }
     }
+
+    console.log(queue.front().element);
 
 }
 
