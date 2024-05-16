@@ -1,21 +1,24 @@
 const { MaxPriorityQueue } = require("@datastructures-js/priority-queue");
 
 function kClosest(arr, k, x) {
-    let queue = new MaxPriorityQueue(), result = [];
+    let heap = new MaxPriorityQueue(), res = [];
 
-    for(let i=0; i<arr.length; i++) {
-        queue.enqueue(arr[i], Math.abs(arr[i] - x));
+    for(let num of arr) {
+        let temp = Math.abs(num - x);
+        heap.enqueue(num ,temp);
 
-        if(queue.size() > k) {
-            queue.dequeue();
+        if(heap.size() > k) {
+            heap.dequeue()
         }
     }
 
-    while(!queue.isEmpty()) {
-        result.push(queue.dequeue())
+    console.log(heap);
+
+    while(!heap.isEmpty()) {
+        res.push(heap.dequeue().element);
     }
 
-    return result.sort((a,b) => a-b)
+    return res.sort((a,b) => a-b)
 }
 
 console.log(kClosest([1,2,3,4,5], 4, 3));
