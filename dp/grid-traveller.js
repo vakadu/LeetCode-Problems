@@ -19,4 +19,25 @@ function gridTraveller(m, n, memo = {}) {
 
 }
 
-console.log(gridTraveller(12, 12));
+function tabular(m, n) {
+    let arr = new Array(m+1).fill(0).map(() => new Array(n+1).fill(0));
+    arr[1][1] = 1;
+
+    for(let i=1; i<=m; i++) {
+        for(let j=1; j<=n; j++) {
+            let current = arr[i][j];
+            if(j+1 <= n) {
+                arr[i][j+1] += current;
+            }
+            if(i+1 <= m) {
+                arr[i+1][j] += current;
+            }
+        }
+    }
+    console.log(arr);
+
+    return arr[m][n]
+}
+
+// console.log(gridTraveller(12, 12));
+console.log(tabular(12, 13));
