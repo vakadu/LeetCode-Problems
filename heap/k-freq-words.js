@@ -1,54 +1,57 @@
-const { MinPriorityQueue } = require("@datastructures-js/priority-queue");
+const { MinPriorityQueue, MaxPriorityQueue } = require('@datastructures-js/priority-queue');
 
 function freq(words, k) {
-    let map = new Map(), res = [];
+	const occurances = {};
+	words.forEach((word) => {
+		if (occurances[word]) {
+			occurances[word] = occurances[word] + 1;
+		} else {
+			occurances[word] = 1;
+		}
+	});
 
-    for(let word of words) {
-        map.set(word, map.get(word) + 1 || 1)
-    }
+	// declare new priority queue
+	const maxHeap = new MaxPriorityQueue({
+		compare: (a, b) => {
+			if (a.rank > b.rank) return -1; // do not swap
+			if (a.rank < b.rank) return 1; // swap
+			const { word: wordA } = a;
+			const { word: wordB } = b;
+			return wordA.localeCompare(wordB);
+		},
+	});
+	// add all items to the priority queue
+	for (const word in occurances) {
+		maxHeap.enqueue({ word, rank: occurances[word] });
+	}
+	console.log(maxHeap);
+	// take off k elements add to result
+	const result = [];
+	for (let i = 0; i < k; i += 1) {
+		const { word } = maxHeap.dequeue();
+		result.push(word);
+	}
 
-    let heap = new MinPriorityQueue({
-        compare: comparator
-    })
-
-
-    for(let [key, val] of map) {
-        heap.enqueue({ k: key, v: val } ,val);
-
-        if(heap.size() > k) {
-            heap.dequeue();
-        }
-    }
-
-    while(!heap.isEmpty()) {
-        let temp = heap.front().k;
-        res.push(temp);
-        heap.dequeue()
-    }
-
-    console.log(res);
-
+	console.log(result);
 }
 
 // freq(["the","day","is","sunny","the","the","the","sunny","is","is"]
 // , 4);
 
-freq(["i","love","leetcode","i","love","coding"], 2)
+freq(['i', 'love', 'leetcode', 'i', 'love', 'coding'], 2);
 
 function comparator(w1, w2) {
-    let k1 = w1.k, k2 = w2.k;
-    if(w1.v == w2.v){
-        let compare = k1.localeCompare(k2);
-        return compare;
-    }
-    return w2.v - w1.v; 
+	if (w1.v > w2.val) return -1;
+	if (w1.v < w2.v) return 1;
+
+	const { k: k1 } = w1;
+	const { k: k2 } = w2;
+
+	return k1.localeCompare(k2);
 }
 
-
-
-
 // function sorted(arr) {
-//     let a = arr.sort((a,b) => 
+//     let a = arr.sort((a,b) =>
 //         a.split(' ')[1].localeCompare(b.split(' ')[1])
 //     )
 
@@ -56,7 +59,6 @@ function comparator(w1, w2) {
 // }
 
 // sorted(["vinod vakadu", "abd dev", "marco reus", "richord anthony", "abd dev"]);
-
 
 // let arr = ["vinod vakadu", "yela nat", "marco reus", "richord anthony", "george king"];
 // // let a = arr.map((a) => a.split(' ')[1]).sort(compare)
