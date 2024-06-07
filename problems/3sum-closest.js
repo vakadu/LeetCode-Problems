@@ -1,20 +1,28 @@
 function sumClose(nums, target) {
-	let i = 0,
-		j = nums.length - 1,
-		sorted = nums.sort(),
-		result = 0;
-
-	while (i <= j) {
-		let mid = Math.floor(i + (j - i) / 2);
-		let sum = sorted[mid - 1] + sorted[mid] + sorted[mid + 1];
-		if (target < sum) {
-			result = sum;
-			j = mid - 1;
-		} else {
-			i = mid + 1;
+	nums.sort((a, b) => a - b), (result = []);
+	for (let i = 0; i < nums.length; i++) {
+		let s = i + 1,
+			e = nums.length - 1;
+		while (s < e) {
+			let sum = nums[i] + nums[s] + nums[e];
+			console.log(sum);
+			result.push(sum);
+			if (sum < target) {
+				s++;
+			} else {
+				e--;
+			}
 		}
 	}
-	console.log(result);
+
+	return findClosest(result, target);
 }
 
-sumClose([-1, 2, 1, -4], 1);
+function findClosest(arr, target) {
+	return arr.reduce((prev, curr) => {
+		return Math.abs(curr - target) < Math.abs(prev - target) ? curr : prev;
+	});
+}
+
+console.log(sumClose([-1, 2, 1, -4], 1));
+console.log(sumClose([0, 0, 0], 1));
