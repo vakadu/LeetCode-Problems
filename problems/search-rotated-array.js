@@ -1,8 +1,16 @@
 function search(nums, target) {
     let peak = findPeak(nums);
-    let left = bs(nums, 0,peak,target);
-    let right = bs(nums, peak+1,nums.length,target);
-    console.log(right);
+    console.log(peak);
+
+    let left = bs(nums, 0, peak, target);
+	let right = bs(nums, peak + 1, nums.length - 1, target);
+
+
+    if(left !== -1) {
+        return left;
+    } else {
+        return right
+    }
 }
 
 function bs(nums, s,e,t) {
@@ -20,20 +28,25 @@ function bs(nums, s,e,t) {
 }
 
 function findPeak(nums) {
-    let s=0, e=nums.length-1;
+    let start = 0,
+    end = nums.length - 1;
 
-    while(s<=e) {
-        let mid = Math.floor(s+(e-s)/2);
-        if(nums[mid] > nums[mid+1] && nums[mid] > nums[mid-1]) {
-            return mid;
-        } else if(nums[mid] < nums[mid+1]) {
-            s=mid+1;
-        } else {
-            e=mid-1
-        }
+    while (start <= end) {
+        let mid = Math.floor(start + (end - start) / 2);
+        if (mid > 0 && nums[mid] > nums[mid + 1] && nums[mid] > nums[mid - 1]) {
+			return mid;
+		} else if (mid === 0 && nums[mid] > nums[mid + 1]) {
+			return mid;
+		} else if (nums[mid] > nums[end]) {
+			start++;
+		} else {
+			end--;
+		}
     }
-
-    return -1
+    return -1;
 }
 
-console.log(search([4,5,6,7,0,1,2], 0));
+console.log(search([6,7,8,1,2,3,4,5], 6));
+// console.log(search([4,5,6,7,0,1,2], 0));
+// console.log(search([3,1], 1));
+// console.log(search([5,1,3], 5));
