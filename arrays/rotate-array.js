@@ -7,7 +7,6 @@ function rotate(nums, k) {
 }
 
 function reverse(start, end, nums) {
-	console.log(start, end);
 	while (start < end) {
 		let temp = nums[start];
 		nums[start] = nums[end];
