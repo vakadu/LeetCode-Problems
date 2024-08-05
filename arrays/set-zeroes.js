@@ -19,7 +19,7 @@ function setZeroes(matrix) {
         }
     }
 
-    console.log(rows, cols);
+    // console.log(rows, cols);
 
     // for (let i = 0; i < matrix.length; i++) {
     //     for (j = 0; j < matrix[i].length; j++) {
