@@ -22,7 +22,6 @@ function subArray(nums, k) {
         sum += nums[i];
 
         if (map.has(sum - k)) {
-            console.log('kkk');
             count += map.get(sum - k);
         }
 
@@ -33,6 +32,6 @@ function subArray(nums, k) {
     return count;
 }
 
-console.log(subArray([1, 1, 1], 2));
+// console.log(subArray([1, 1, 1], 2));
 console.log(subArray([1, 2, 3], 3));
-console.log(subArray([1], 0));
+// console.log(subArray([1], 0));
