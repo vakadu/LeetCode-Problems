@@ -1,4 +1,5 @@
 function insert(intervals, newInterval) {
+    intervals.sort((a, b) => a[0] - b[0]);
     let result = [],
         i = 0;
 
@@ -8,11 +9,11 @@ function insert(intervals, newInterval) {
     }
 
     while (i < intervals.length && intervals[i][0] <= newInterval[1]) {
-        let curr = intervals[i];
-        newInterval[0] = Math.min(newInterval[0], curr[0]);
-        newInterval[1] = Math.max(newInterval[1], curr[1]);
+        newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
+        newInterval[1] = Math.max(newInterval[1], intervals[i][1]);
         i++;
     }
+
     result.push(newInterval);
 
     while (i < intervals.length) {
@@ -20,7 +21,7 @@ function insert(intervals, newInterval) {
         i++;
     }
 
-    console.log(result);
+    return result;
 }
 
 console.log(
@@ -33,5 +34,15 @@ console.log(
             [12, 16],
         ],
         [4, 8]
+    )
+);
+
+console.log(
+    insert(
+        [
+            [1, 3],
+            [6, 9],
+        ],
+        [2, 5]
     )
 );
