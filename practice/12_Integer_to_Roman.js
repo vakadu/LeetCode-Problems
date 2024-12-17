@@ -25,8 +25,8 @@ function itr(num) {
             result += arr[i].repeat(val);
             num = num % romnas[arr[i]];
         }
-        console.log(val);
     }
+    return result;
 }
 
 console.log(itr(3749));
