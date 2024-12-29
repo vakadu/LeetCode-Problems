@@ -4,6 +4,11 @@ fun main() {
 
 fun strStr(haystack: String, needle: String): Int {
 	for(i in 0 until haystack.length) {
-		val temp = haystack.substring(i..i+needle.length)
+		val temp = haystack.substring(i, i+needle.length)
+		if(temp === needle) {
+			return i
+		}
 	}
+
+	return -1
 }
