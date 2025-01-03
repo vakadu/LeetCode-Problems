@@ -11,18 +11,16 @@ fun helper1(n: Int, start: Int, p: String): String {
 		return p
 	}
 	var count = 1
-	var temp = ""
-	var i = 0
+	var temp = StringBuilder()
 
-	while(i<p.length-1) {
+	for (i in 0 until p.length) {
 		if(p[i] == p[i+1]) {
 			count++
 		} else {
-			temp = "$count${p[i]}"
+			temp.append(count).append(p[i])
 			count = 1
 		}
-		i++
 	}
 
-	return helper1(n, start+1, temp)
+	return helper1(n, start+1, temp.toString())
 }
